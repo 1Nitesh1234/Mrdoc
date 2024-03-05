@@ -1,0 +1,94 @@
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendar</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .calendar {
+        width: 300px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 0 auto;
+    }
+    .month {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+    }
+    .day {
+        border: 1px solid #ccc;
+        padding: 5px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .today {
+        background-color: #f0f0f0;
+    }
+    .selected {
+        background-color: #007bff;
+        color: #fff;
+    }
+</style>
+</head>
+<body>
+
+<div class="calendar">
+    <div class="month">March 2024</div>
+    <div class="days" id="calendarDays"></div>
+</div>
+
+<script>
+    const calendarDays = document.getElementById('calendarDays');
+
+    function generateCalendar() {
+        const today = new Date();
+        const currentMonth = today.getMonth();
+        const currentYear = today.getFullYear();
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
+        const lastDayIndex = new Date(currentYear, currentMonth, daysInMonth).getDay();
+        const prevDays = firstDayIndex - 1 === -1 ? 6 : firstDayIndex - 1;
+        const nextDays = 7 - lastDayIndex;
+
+        let days = '';
+
+        for (let i = prevDays; i > 0; i--) {
+            const prevDay = new Date(currentYear, currentMonth, 0 - i + 1);
+            days += `<div class="day">${prevDay.getDate()}</div>`;
+        }
+
+        for (let i = 1; i <= daysInMonth; i++) {
+            const currentDate = new Date(currentYear, currentMonth, i);
+            const isToday = currentDate.toDateString() === today.toDateString();
+            days += `<div class="day${isToday ? ' today' : ''}" data-date="${currentDate.toISOString().split('T')[0]}">${i}</div>`;
+        }
+
+        for (let i = 1; i <= nextDays; i++) {
+            const nextDay = new Date(currentYear, currentMonth + 1, i);
+            days += `<div class="day">${nextDay.getDate()}</div>`;
+        }
+
+        calendarDays.innerHTML = days;
+
+        const dayElements = document.querySelectorAll('.day');
+        dayElements.forEach(day => {
+            day.addEventListener('click', () => {
+                dayElements.forEach(d => d.classList.remove('selected'));
+                day.classList.add('selected');
+            });
+        });
+    }
+
+    generateCalendar();
+</script>
+
+</body>
+</html>

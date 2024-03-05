@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Display with Images</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+  }
+  
+  .card {
+    width: 200px;
+    background-color:wheat;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .card img {
+    max-width: 100%;
+    border-radius: 4px;
+  }
+  
+  .card h2 {
+    margin-top: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="card">
+    <img src="https://via.placeholder.com/200" alt="Image 1">
+    <h2>Card 1</h2>
+    <p>This is the content of card 1.</p>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/200" alt="Image 2">
+    <h2>Card 2</h2>
+    <p>This is the content of card 2.</p>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/200" alt="Image 3">
+    <h2>Card 3</h2>
+    <p>This is the content of card 3.</p>
+  </div>
+  <!-- Add more cards here -->
+</div>
+
+</body>
+</html>

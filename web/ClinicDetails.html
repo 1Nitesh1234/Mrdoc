@@ -1,0 +1,174 @@
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        <style>
+            *{
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+
+            }
+            body{
+                background: rgb(27,27,27);
+
+            }
+            button{
+                background: #85c1ee;
+            }
+
+            .cardss{
+                background: white;
+                width: 270px;
+                height: auto;
+                margin: 10px;
+                padding: 20px; /* Add padding */
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+            }
+            .card-image{
+                background: wheat;
+                height: 200px;
+                width: 100%;
+                margin-bottom: 1px;
+                background-size: cover;
+
+            }
+
+            h4{
+                font-family: sans-serif;
+            }
+
+
+            .cardss a{
+                background: #85c1ee;
+                padding: 10px 24px;
+
+                text-decoration: none;
+                font-size: 18px;
+                border-radius: 20px;
+
+            }
+            .cardss a,button:hover{
+                background: #034e88;
+                color: #ffffff;
+            }
+
+
+
+
+        </style>
+
+
+    </head>
+    <body>
+        <section class="container">            
+            <div class="row" id="card">
+                <!--<div>
+                    <img class="card-image" src="Clinics/cl2.png">
+                
+                <h2>Ashwini Maternity</h2><br>
+                <h4>A/375 nalanda nagar rajiv gandhi chawl ghatkopar (e)</h4><br><br><br>
+                <a href="DashboardDetails">View details</a>
+                </div>-->
+            </div>
+
+
+        </section>
+    </body>
+    <script>
+
+        const clinics = [
+           {
+                id: 1,
+                img: 'Clinics/cl2.png',
+                name: 'Ashwini Maternity',
+                address: 'A-375 nalanda nagar rajiv gandhi chawl'
+            },
+            {
+                id: 110,
+                img: 'Clinics/cl(1).png',
+                name: 'vishwanath bergal',
+                address: 'A-375 nalanda nagar rajiv gandhi chawl'
+            },
+            {
+                id: 172,
+                img: 'Clinics/cl3.png',
+                name: 'Ashwini Maternity',
+                address: 'A-375 nalanda nagar rajiv gandhi chawl'
+            },
+            {
+                id: 4,
+                img: 'Clinics/cl4.png',
+                name: 'Ashwini Maternity',
+                address: 'A-375 nalanda nagar rajiv gandhi chawl'
+            },
+            {
+                id: 5,
+                img: 'Clinics/cl5.png',
+                name: 'Ashwini Maternity',
+                address: 'A-375 nalanda nagar rajiv gandhi chawl'
+            },
+            {
+                id: 6,
+                img: 'Clinics/cl6.png',
+                name: 'Ashwini Maternity',
+                address: 'A-375 nalanda nagar rajiv gandhi chawl'
+            },
+            {
+                id: 7,
+                img: 'Clinics/cl7.png',
+                name: 'Ashwini Maternity',
+                address: 'A-375 nalanda nagar rajiv gandhi chawl mum-400077'
+            },
+            {
+                id: 8,
+                img: 'Clinics/cl8.png',
+                name: 'Ashwini Maternity',
+                address: 'A-375 nalanda nagar rajiv gandhi chawl'
+            },
+            {
+                id: 9,
+                img: 'Clinics/cl5.png',
+                name: 'Ashwini Maternity',
+                address: 'A-375 nalanda nagar rajiv gandhi chawl'
+            },
+            {
+                id: 10,
+                img: 'Clinics/cl5.png',
+                name: 'Ashwini Maternity',
+                address: 'A-375 nalanda nagar rajiv gandhi chawl'
+            }
+        ];
+
+        for (let index = 0; index < clinics.length; index++) {
+            const element = clinics[index];
+            const card = document.getElementById("card");
+            const newItem = document.createElement('div');
+            newItem.innerHTML = getElement(element, index);
+            card.appendChild(newItem);
+            newItem.setAttribute('class', 'col-sm-3 cardss')
+        }
+
+        function getItemId(index) {
+            document.cookie = "id=" + index;
+            console.log(index)
+        }
+
+
+        function getElement(element, index) {
+            return  (
+                    '<img class="card-image" src="' + element.img + '">' +
+                    '<h2>' + element.name + '</h2><br>' +
+                    '<h4>' + element.address + '</h4><br>' +
+                    '<a href="ClinicsSR"><button onclick="getItemId(' + element.id + ')">View details</button></a> '
+                    )
+        }
+
+
+    </script>
+</html>

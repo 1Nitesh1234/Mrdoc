@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="userhomepagejsp.css">
+
+    </head>
+    <body>
+        <script>
+            function bookAppointment() {
+                var doctorName = document.getElementById('doctorName').value;
+                var appointmentDate = document.getElementById('appointmentDate').value;
+                var appointmentTime = document.getElementById('appointmentTime').value;
+
+                var table = document.getElementById('appointmentList');
+                var newRow = table.insertRow(table.rows.length);
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                var cell3 = newRow.insertCell(2);
+
+                cell1.innerHTML = doctorName;
+                cell2.innerHTML = appointmentDate;
+                cell3.innerHTML = appointmentTime;
+            }
+        </script>
+
+
+        <h2>Appointments</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Doctor Name</th>
+                    <th>Appointment Date</th>
+                    <th>Appointment Time</th>
+                </tr>
+            </thead>
+            <tbody id="appointmentList">
+
+            </tbody>
+        </table>
+
+
+        <script>
+            const slider = document.querySelector('.slider');
+            let currentIndex = 0;
+
+            function slideNext() {
+                currentIndex = (currentIndex + 1) % 3;
+                updateSlider();
+            }
+
+            function updateSlider() {
+                const translateValue = -currentIndex * 100;
+                slider.style.transform = `translateX(${translateValue}%)`;
+            }
+
+            setInterval(slideNext, 3000);
+        </script>
+    </body>
+</html>

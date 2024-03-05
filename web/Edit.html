@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                box-sizing: border-box;
+                font-family: 'poppins',sans-serif;
+                
+            }
+            .container
+            {
+                position: relative;
+                width: 100%;
+                min-height: 100vh;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                transition: 0.5s;
+                padding: 20px;
+                 background-image: url("img/edit.jpg");
+                background-position: center; 
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+            .container .content{
+                position: relative;
+                max-width: 800px;
+            }
+            h2{
+                font-weight: 600;
+                margin-bottom: 10px;
+                color: #333;
+                
+            }
+            #popup{
+                position: fixed;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                width: 400px;
+                padding:50px;
+                box-shadow: 0 5px 30px rgba(0,0,0,0.30);
+                
+               
+                
+            }
+             input {
+                width: 300px;
+                padding: 6px;
+                margin-bottom: 20px;
+                box-sizing:border-box;
+                display: block;
+                margin-bottom: 8px;
+             }
+                
+            
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="content">
+                 <form  action="UpdateServlet" id="popup">
+                 
+                <h1>Update Here</h1>
+                User id:<input type="text" name="uid" required><br>
+                user name:<input type="text" name="username" required><br>
+                Mobile no.:<input type="text" name="mob" id="mob" required><br>
+                Email:<input type="email" name="email" required><br>
+                Password:<input type="password" name="pass" id="pass" required><br>
+                Confirm Password:<input type="password" name="conpass" id="conpass" required><br>
+                <div class="error" id="passwordError"></div>
+                <button type="submit">Register</button>
+            </form>
+                
+            </div>
+        </div>
+    </body>
+</html>

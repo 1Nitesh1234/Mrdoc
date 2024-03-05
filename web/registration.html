@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Registration Page</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: black;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            form {
+                background-color: rgb(195, 192, 192);
+
+                padding: 20px;
+
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                width: 500px;
+            }
+
+
+
+            input {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 20px;
+                box-sizing: border-box;
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            button {
+                background-color: #423e3e;
+                color: #fff;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            body {
+                background-image: url("regispagephoto/ph1.jpg");
+                background-position: center; 
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                animation: change 40s infinite ease-out;
+            }
+            .error{
+                color: red;
+            }
+
+            @keyframes change{
+                0%{
+                    background-image: url("regimg/ph1.jpg");
+                }
+                25%{
+                    background-image: url("regimg/ph2.jpg");
+                }
+                50%{
+                    background-image: url("regimg/ph3.jpg");
+                }
+                75%{
+                    background-image: url("regimg/ph4.jpg");
+                }
+                100%{
+                    background-image: url("regimg/ph5.jpg");
+                }
+
+            </style>
+        </head>
+        <body>
+            <form  action="UserRegistration" onsubmit="return validateForm() && validateMobileNumber()">
+                <h1>Register Here</h1>
+                user name:<input type="text" name="username" required>
+                Mobile no.:<input type="text" name="mob" id="mob" required>
+                Email:<input type="email" name="email" required>
+                Password:<input type="password" name="pass" id="pass" required>
+                Confirm Password:<input type="password" name="conpass" id="conpass" required>
+                <div class="error" id="passwordError"></div>
+                <button type="submit">Register</button>
+            </form>
+            <script>
+                function validateForm() {
+                    var password = document.getElementById("pass").value;
+                    var confirmPassword = document.getElementById("conpass").value;
+
+                    if (password !== confirmPassword) {
+                        alert("Password and Comfirm password does not matches");
+                        return false;
+                    } else {
+                        passwordError.textContent = "";
+                        return true;
+                    }
+                }
+                function validateMobileNumber() {
+                    var mobileNumber = document.getElementById("mob").value;
+
+                    var mobileNumberPattern = /^[6-9]\d{9}$/;
+
+                    if (!mobileNumberPattern.test(mobileNumber)) {
+                        alert("Enter valid Mobile number");
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            </script>
+
+
+
+
+        </body>
+    </html>
+

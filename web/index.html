@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100vh;
+                font-family: sans-serif;
+            }
+            
+            .section_top{
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                position: relative;
+                background-image: url("img/ph2.jpg");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                text-align: center;
+                justify-content: center;
+                animation: change 40s infinite ease-in-out;
+            }
+           
+            .content{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                text-transform: uppercase;
+            }
+            .adlog{
+                display: flex;
+                position: absolute;
+                right: 20px;
+            }
+            .addoc{
+              
+                position: absolute;
+                right: 120px;
+            }
+            .content a{
+                background: #85c1ee;
+                padding: 10px 24px;
+                text-decoration: none;
+                font-size: 18px;
+                border-radius: 20px;
+            }
+            .content a:hover{
+                background: #034e88;
+                color: #ffffff;
+            }
+            @keyframes change{
+                0%{
+                    background-image: url("img/ph2.jpg");
+                }
+                25%{
+                    background-image: url("img/ph3.jpg");
+                }
+                50%{
+                    background-image: url("img/ph4.jpg");
+                }
+                75%{
+                    background-image: url("img/ph5.jpg");
+                }
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+        <div class="section_top">
+            <h1>Welocme to Mrdoc</h1>
+            <div class="content">
+                <a href="login.html">click here to login</a><br><br><br>
+                <a href="registration.html">if new user register here</a><br><br><br>
+                
+            </div>
+            
+           <a class="adlog" href="AdminLogin.html">Admin Login</a>|
+           <a  class="addoc" href="Doctor_Loginpage.html">Doctor's Login</a>
+
+        </div>
+    </body>
