@@ -20,7 +20,10 @@ public class ProfServ extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String uname = request.getParameter("user");
+        String uname = (String)request.getAttribute("name");
+        String password = (String)request.getAttribute("pass");
+        out.println(uname);
+        out.println(password);
         
         try {
             Class.forName("com.mysql.jdbc.Driver");

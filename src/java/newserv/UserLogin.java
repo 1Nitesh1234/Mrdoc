@@ -20,9 +20,11 @@ public class UserLogin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         {
+            
             String uname = request.getParameter("username");
             String pass = request.getParameter("password");
             request.setAttribute("name", uname);
+            
 
             try {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -35,8 +37,12 @@ public class UserLogin extends HttpServlet {
 
                 if (rs.next()) {
                     if (pass.equals(rs.getString(1))) {
+                        String passwrd=rs.getString("password");
+                         request.setAttribute("pass", passwrd);
+                         
                         RequestDispatcher rd = request.getRequestDispatcher("Userhomepage.jsp");
                         rd.forward(request, response);
+                       
                          
 
                     } else {

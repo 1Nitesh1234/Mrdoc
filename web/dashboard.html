@@ -1,94 +1,78 @@
-Copy code
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calendar</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-    }
-    .calendar {
-        width: 300px;
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin: 0 auto;
-    }
-    .month {
-        text-align: center;
-        margin-bottom: 10px;
-    }
-    .days {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-    }
-    .day {
-        border: 1px solid #ccc;
-        padding: 5px;
-        text-align: center;
-        cursor: pointer;
-    }
-    .today {
-        background-color: #f0f0f0;
-    }
-    .selected {
-        background-color: #007bff;
-        color: #fff;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact MrDoc</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
 
-<div class="calendar">
-    <div class="month">March 2024</div>
-    <div class="days" id="calendarDays"></div>
+<div class="container">
+    <h2>Contact MrDoc</h2>
+    <form action="#" method="post">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your name..." required>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your email..." required>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" placeholder="Subject..." required>
+
+        <label for="message">Your Message:</label>
+        <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+
+        <input type="submit" value="Submit">
+    </form>
 </div>
-
-<script>
-    const calendarDays = document.getElementById('calendarDays');
-
-    function generateCalendar() {
-        const today = new Date();
-        const currentMonth = today.getMonth();
-        const currentYear = today.getFullYear();
-        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-        const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
-        const lastDayIndex = new Date(currentYear, currentMonth, daysInMonth).getDay();
-        const prevDays = firstDayIndex - 1 === -1 ? 6 : firstDayIndex - 1;
-        const nextDays = 7 - lastDayIndex;
-
-        let days = '';
-
-        for (let i = prevDays; i > 0; i--) {
-            const prevDay = new Date(currentYear, currentMonth, 0 - i + 1);
-            days += `<div class="day">${prevDay.getDate()}</div>`;
-        }
-
-        for (let i = 1; i <= daysInMonth; i++) {
-            const currentDate = new Date(currentYear, currentMonth, i);
-            const isToday = currentDate.toDateString() === today.toDateString();
-            days += `<div class="day${isToday ? ' today' : ''}" data-date="${currentDate.toISOString().split('T')[0]}">${i}</div>`;
-        }
-
-        for (let i = 1; i <= nextDays; i++) {
-            const nextDay = new Date(currentYear, currentMonth + 1, i);
-            days += `<div class="day">${nextDay.getDate()}</div>`;
-        }
-
-        calendarDays.innerHTML = days;
-
-        const dayElements = document.querySelectorAll('.day');
-        dayElements.forEach(day => {
-            day.addEventListener('click', () => {
-                dayElements.forEach(d => d.classList.remove('selected'));
-                day.classList.add('selected');
-            });
-        });
-    }
-
-    generateCalendar();
-</script>
 
 </body>
 </html>
