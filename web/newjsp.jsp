@@ -65,7 +65,7 @@
         <a href="Homepagehome">Users</a> |
         <a href="AdminLogin.html">Logout</a>|
         <a href="Admin_Addclinic.html">add new clinic</a>|
-        <a href="DocReg.html">Add Doctor</a>
+        <a href="DocReg.jsp">Add Doctor</a>
     </nav>
         <nav class="navigate">
             <p>Hello, ${name}!</p>

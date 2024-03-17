@@ -14,18 +14,20 @@
                 justify-content: center;
                 align-items: center;
                 height: 100vh;
-                background-image: url("Admin/Ad1.jpg");
+                background-image: url("Admin/Ad3.jpg");
                 background-repeat: no-repeat;
                 background-attachment: fixed;
                 background-size: cover;
             }
 
-            form {
-                background-color: rgb(195, 192, 192);
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                width: 300px;
+            form { position: fixed;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                width: 400px;
+                padding:50px;
+                box-shadow: 0 5px 30px rgba(0,0,0,0.30);
+                
             }
 
             label {
@@ -40,14 +42,19 @@
                 box-sizing: border-box;
             }
 
-            button {
-                background-color:#423e3e;
-                color: #fff;
-                padding: 10px 15px;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
+             button {
+                
+                background: #333;
+                padding: 10px 24px;
+                text-decoration: none;
+                font-size: 18px;
+                border-radius: 20px;
             }
+            button:hover{
+                background: #ffff;
+                color: #333
+            }
+            
         </style>
     </head>
     <body>

@@ -68,6 +68,14 @@
         <servlet-name>Doc_login</servlet-name>
         <servlet-class>newserv.Doc_login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserEdit</servlet-name>
+        <servlet-class>newserv.UserEdit</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserhomepageDbcon</servlet-name>
+        <servlet-class>newserv.UserhomepageDbcon</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
@@ -135,6 +143,14 @@
     <servlet-mapping>
         <servlet-name>Doc_login</servlet-name>
         <url-pattern>/Doc_login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserEdit</servlet-name>
+        <url-pattern>/UserEdit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserhomepageDbcon</servlet-name>
+        <url-pattern>/UserhomepageDbcon</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

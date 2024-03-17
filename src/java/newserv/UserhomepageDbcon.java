@@ -1,3 +1,4 @@
+
 package newserv;
 
 import java.io.IOException;
@@ -11,33 +12,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class DocRegistration extends HttpServlet {
 
+public class UserhomepageDbcon extends HttpServlet {
+
+ 
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        Random rand = new Random();
+         Random rand = new Random();
         int Did = rand.nextInt(1000);
-        String Name = request.getParameter("name");
-        int pass = rand.nextInt(999999999);
-        String mobno = request.getParameter("mob");
-        String Email = request.getParameter("email");
-        String dspetiality = request.getParameter("spl");
-        String Experience = request.getParameter("exp");
-        String Education = request.getParameter("edu");
+        String Name = request.getParameter("PN");
+        
+        String gender = request.getParameter("GN");
+        String cat = request.getParameter("Categories");
+        String doc = request.getParameter("doctor");
+        String Adate = request.getParameter("date");
+        String Atime = request.getParameter("time");
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/mrdoc", "root", "root");
-            PreparedStatement pstm = con.prepareStatement("insert into doc_reg values(?,?,?,?,?,?,?,?)");
+            PreparedStatement pstm = con.prepareStatement("insert into booking_details values(?,?,?,?,?,?,?)");
             pstm.setInt(1, Did);
-            pstm.setString(2, Name);
-            pstm.setInt(3, pass);
-            pstm.setString(4, mobno);
-            pstm.setString(5, Email);
-            pstm.setString(6, dspetiality);
-            pstm.setString(7, Experience);
-            pstm.setString(8, Education);
+            pstm.setString(2,Name);
+            pstm.setString(3, gender);
+            pstm.setString(4, cat);
+            pstm.setString(5, doc);
+            pstm.setString(6, Adate);
+            pstm.setString(7, Atime);
 
             int row = pstm.executeUpdate();
             if (row == 1) {
@@ -50,13 +52,16 @@ public class DocRegistration extends HttpServlet {
                         + "<h1>Registration Successful</h1>"
                         + "<p>User Name: " + Name + "</p>"
                         + "<p>Registration ID: " + Did + "</p>"
-                        + "<a href='sendmail.html'>Send Mail</a>"
-                        + "</body></html>");
+                        + 
+                        "</body></html>");
             } else {
                 out.println("Data could not be inserted");
             }
         } catch (Exception e) {
             out.println(e);
         }
+        }
     }
-}
+
+
+

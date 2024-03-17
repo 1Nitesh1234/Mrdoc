@@ -30,7 +30,7 @@ public class Doc_Mail extends HttpServlet {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/mrdoc", "root", "root");
-            PreparedStatement pstm = con.prepareStatement("select Demail,Dpass,Dname from doctor_registration where DID=?");
+            PreparedStatement pstm = con.prepareStatement("select Demail,Dpass,Dname from doc_reg where DID=?");
 
             pstm.setString(1, doid);
 
@@ -39,23 +39,36 @@ public class Doc_Mail extends HttpServlet {
                 String email = rs.getString("Demail");
                 String pass = rs.getString("Dpass");
                 String Name = rs.getString("Dname");
-                out.println("Doctor's Email: " + email);
-                out.println("Doctor's pass: " + pass);
-                request.setAttribute("name",email);
-                request.setAttribute("password",pass);
-                request.setAttribute("docname",Name);
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>User Profile</title>");
+                out.println("<style>");
+                out.println("body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }");
+                out.println("h1 { text-align: center; margin-top: 20px; }");
+                out.println("button { display: block; margin: 20px auto; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; }");
+                out.println("</style>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>Email sent successfully.</h1>");
+                out.println("<button onclick='goBack()'>Go Back</button>");
+                out.println("<script>"
+                        + "function goBack() {"
+                        + "            window.history.back();"
+                        + "}"
+                        + "</script>");
+                out.println("</body>");
+                out.println("</html>");
+
+                request.setAttribute("name", email);
+                request.setAttribute("password", pass);
+                request.setAttribute("docname", Name);
                 RequestDispatcher rd = request.getRequestDispatcher("SendMail.jsp");
                 rd.forward(request, response);
-                
-
-                // Send email after retrieving the email address
-                out.println("<br>Email sent successfully.");
             } else {
                 out.println("Doctor with ID " + doid + " not found.");
             }
-            
 
-            con.close(); // Close the connection
+            con.close(); 
         } catch (Exception e) {
             out.println(e);
         }

@@ -29,7 +29,7 @@ public class Doc_login extends HttpServlet {
                 Class.forName("com.mysql.jdbc.Driver");
 
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/mrdoc", "root", "root");
-                PreparedStatement pstm = con.prepareStatement("select Dpass,Dname from  doctor_registration where Demail=?");
+                PreparedStatement pstm = con.prepareStatement("select Dpass,Dname from  doc_reg where Demail=?");
                 pstm.setString(1, uname);
                 ResultSet rs = pstm.executeQuery();
               
@@ -37,7 +37,7 @@ public class Doc_login extends HttpServlet {
                 if (rs.next()) {
                     if (pass.equals(rs.getString(1))) {
                         out.println("registered successfully");
-                        RequestDispatcher rd = request.getRequestDispatcher("Doctor_Loginpage.html");
+                        RequestDispatcher rd = request.getRequestDispatcher("Dochome_page.jsp");
                         rd.forward(request, response);
                          
 

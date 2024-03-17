@@ -44,20 +44,26 @@
             }
 
 
-            .cardss a{
+            a button {
                 background: #85c1ee;
                 padding: 10px 24px;
-
                 text-decoration: none;
                 font-size: 18px;
-                border-radius: 20px;
+                border-radius: 20px; 
+                border: none; 
+                cursor: pointer;
+                margin-top: 10px; 
+            }            
 
-            }
-            .cardss a,button:hover{
+            a button:hover {
                 background: #034e88;
                 color: #ffffff;
             }
 
+            .cardss:hover {
+                box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+                transition: box-shadow 0.3s ease;
+            }
 
 
 
@@ -83,7 +89,7 @@
     <script>
 
         const clinics = [
-           {
+            {
                 id: 55,
                 img: 'https://www.tankmaternity.com/images/Logo.jpg',
                 name: 'Ashwini Maternity',
@@ -165,7 +171,7 @@
                     '<img class="card-image" src="' + element.img + '">' +
                     '<h2>' + element.name + '</h2><br>' +
                     '<h4>' + element.address + '</h4><br>' +
-                    '<a href="ClinicsSR"><button onclick="getItemId(' + element.id + ')">View details</button></a> '
+                    '<a href="ClinicsSR" id="anc"><button onclick="getItemId(' + element.id + ')">View details</button></a> '
                     )
         }
 
